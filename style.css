@@ -1,0 +1,103 @@
+/* General */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styling */
+#signup-container, #login-container, #dashboard {
+  background: white;
+  padding: 25px 30px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 450px;
+}
+
+/* Headings */
+h2, h3 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* Input fields and buttons */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #007BFF;
+}
+
+/* Buttons */
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Links */
+a {
+  color: #007BFF;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Table */
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+th {
+  background-color: #007BFF;
+  color: white;
+}
+td button {
+  background-color: #dc3545;
+  width: 80%;
+}
+td button:hover {
+  background-color: #a71d2a;
+}
+
+/* Summary Section */
+#dashboard p {
+  background: #e9ecef;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Chart */
+#expenseChart {
+  display: block;
+  margin: 0 auto;
+  max-width: 350px;
+}

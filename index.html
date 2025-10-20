@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Finance App</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sign Up Page -->
+    <div id="signup-container">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username"><br>
+        <input type="password" id="signup-password" placeholder="Password"><br>
+        <button onclick="signup()">Sign Up</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        <p id="signup-msg" style="color:red;"></p>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-container" style="display:none;">
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="Username"><br>
+        <input type="password" id="login-password" placeholder="Password"><br>
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+        <p id="login-msg" style="color:red;"></p>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" style="display:none;">
+        <h2>Welcome, <span id="user-display"></span></h2>
+        <h3>Add Transaction</h3>
+        <input type="date" id="date"><br>
+        <select id="category">
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Utilities</option>
+            <option>Entertainment</option>
+            <option>Others</option>
+        </select><br>
+        <select id="type">
+            <option>Income</option>
+            <option>Expense</option>
+        </select><br>
+        <input type="number" id="amount" placeholder="Amount"><br>
+        <button onclick="addTransaction()">Add</button>
+        <button onclick="logout()">Logout</button>
+
+        <h3>Summary</h3>
+        <p>Total Income: <span id="total-income">0</span></p>
+        <p>Total Expense: <span id="total-expense">0</span></p>
+        <p>Net Balance: <span id="net-balance">0</span></p>
+
+        <h3>Transactions</h3>
+        <table id="trans-table">
+            <tr>
+                <th>Date</th><th>Category</th><th>Type</th><th>Amount</th><th>Action</th>
+            </tr>
+        </table>
+
+        <h3>Expenses by Category</h3>
+        <canvas id="expenseChart" width="400" height="400"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
