@@ -72,6 +72,10 @@ function addTransaction(){
     let amount = parseFloat(document.getElementById("amount").value);
 
     if(!date || !amount){ alert("Enter valid date and amount."); return; }
+        // If it's income, we don't want categories attached
+    if(type === "Income"){
+        category = "-"; // or null if you prefer
+    }
 
     let users = getUsers();
     users[currentUser].transactions.push({date, category, type, amount});
@@ -94,7 +98,7 @@ function updateTable(){
     transactions.forEach((t,i)=>{
         let row = table.insertRow();
         row.insertCell(0).innerText = t.date;
-        row.insertCell(1).innerText = t.category;
+        row.insertCell(1).innerText = t.type === "Income" ? "—" : t.category;
         row.insertCell(2).innerText = t.type;
         row.insertCell(3).innerText = t.amount;
         let delBtn = document.createElement("button");
@@ -145,3 +149,34 @@ function updateChart(){
         }
     });
 }
+// ---------------- Handle Type Change ----------------
+function onTypeChange() {
+    let type = document.getElementById("type").value;
+    let categoryField = document.getElementById("category");
+
+    if (type === "Income") {
+        categoryField.value = "";
+        categoryField.disabled = true; // Disable category for income
+    } else {
+        categoryField.disabled = false; // Enable category for expense
+    }
+}
+// ---------------- Data Migration ----------------
+function migrateOldData() {
+    let users = getUsers();
+
+    Object.keys(users).forEach(username => {
+        users[username].transactions.forEach(t => {
+            // If it's income and has no category, fix it
+            if (t.type === "Income" && (!t.category || t.category.trim() === "")) {
+                t.category = "—";
+            }
+        });
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+window.onload = function() {
+    migrateOldData();
+};
